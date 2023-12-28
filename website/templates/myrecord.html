@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<a href="{% url 'home' %}" class="btn btn-primary">Назад</a>
+<a href="{% url 'del_record' customer_record.name%}" class="btn btn-danger">Удалить</a>
+<h1>Просмотреть выставку:</h1>
+
+<div class="card" style="width: 18rem;">
+  <img src="{{ customer_record.image_of_event.url }}"><br/>
+  <div class="card-body">
+    <h5 class="card-title">{{ customer_record.name }}</h5>
+    <p class="card-text">{{ customer_record.description }}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Начало: {{ customer_record.data_begin }}</li>
+    <li class="list-group-item">Конец : {{ customer_record.data_end }}</li>
+  </ul>
+</div>
+<br/>
+{% for e in customer_record.exp.all %}
+<div class="card">
+    <img src="{{ e.image_of_exp1.url }}"><br/>
+    <div class="card-body">
+      <h5 class="card-title"><a href="{% url 'myexponent' e.name %}">{{ e.name }}</a></h5>
+      </div>
+  </div>
+{% endfor %}
+
+{% endblock %}

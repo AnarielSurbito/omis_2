@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+    <h1>Мои мероприятия</h1>
+        <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">Name</th>
+      <th scope="col">Data of ending</th>
+    </tr>
+  </thead>
+  <tbody>
+           {% if events %}
+        {% for event in events %}
+           <tr>
+            <td><img src="{{ event.image_of_event.url }}"></td>
+            <td><a href="{% url 'myrecord' event.name %}">{{ event.name }}<a/></td>
+            <!--{{ event.data_begin }}-->
+            <td>{{ event.data_end }}</td>
+           </tr>
+        {% endfor %}
+    {% endif %}
+
+  </tbody>
+</table>
+
+    {% else %}
+<br/>
+<h1>Залогиньтесь или <a href="{% url 'register'%}">Зарегестрируйтесь</a></h1>
+
+{% endif %}
+{% endblock %}

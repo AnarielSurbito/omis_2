@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<a href="{% url 'home' %}" class="btn btn-primary">Назад</a>
+
+<h1>Просмотреть экспонат:</h1>
+<div class="card" style="width: 18rem;">
+  <<img src="{{ customer_exp.image_of_exp1.url }}"><br/>
+  <div class="card-body">
+    <h5 class="card-title">{{ customer_exp.name }}</h5>
+    <p class="card-text">{{ customer_exp.desription }}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Выступающий: {{ customer_exp.name_of_company }}</li>
+    <li class="list-group-item">Цена: {{ customer_exp.price }}</li>
+  </ul>
+</div>
+<br/>
+
+{% endblock %}

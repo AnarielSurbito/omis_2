@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class ="col-md-6 offset-md-3">
+<h1>Добавить экспонат</h1>
+    <br/>
+    <form method = "POST" action="{% url 'add_exponent' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br/>
+  <button type="submit" class="btn btn-primary">Добавить экспонат</button>
+</form>
+
+{% endblock %}

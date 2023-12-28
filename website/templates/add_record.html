@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class ="col-md-6 offset-md-3">
+<h1>Добавить выставку</h1>
+    <br/>
+    <form method = "POST" action="{% url 'add_record' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br/>
+        <a class="nav-link" href="{% url 'add_exponent' %}">Добавить Экспонат</a>
+  <button type="submit" class="btn btn-primary">Добавить выставку</button>
+</form>
+
+{% endblock %}
